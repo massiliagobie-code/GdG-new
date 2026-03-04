@@ -3,22 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React App</title>
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        #root { margin: 20px; }
-    </style>
+    <title>Guilde Bernard Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel for JSX support -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-    <div id="root"></div>
-    <script>
-        // Your React code here
-        function App() {
-            return <h1>Hello, React!</h1>;
+    <div id="app"></div>
+    <script type="text/babel">
+        // Sample player data
+        const playerData = [
+            { id: 1, name: 'Player 1', score: 100 },
+            { id: 2, name: 'Player 2', score: 150 }
+        ];
+
+        function Navbar() {
+            return (
+                <nav>
+                    <ul>
+                        <li><a href="#evolution">Evolution</a></li>
+                        <li><a href="#classement">Classement</a></li>
+                        <li><a href="#progression">Progression</a></li>
+                    </ul>
+                </nav>
+            );
         }
-        ReactDOM.render(<App />, document.getElementById('root'));
+
+        function Evolution() {
+            return <div><h2>Evolution Page</h2></div>;
+        }
+
+        function Classement() {
+            return <div><h2>Classement Page</h2>{JSON.stringify(playerData)}</div>;
+        }
+
+        function Progression() {
+            return <div><h2>Progression Page</h2></div>;
+        }
+
+        function App() {
+            return (
+                <div>
+                    <Navbar />
+                    <h1>Guilde Bernard Dashboard</h1>
+                    <Evolution />
+                    <Classement />
+                    <Progression />
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('app')); 
     </script>
+    <style>
+        body {
+            background-color: #333;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </body>
 </html>
